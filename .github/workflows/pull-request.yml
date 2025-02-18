@@ -1,0 +1,46 @@
+name: MAIN_PULL_REQUEST
+
+on:
+  pull_request:
+    branches: [develop, main]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          architecture: x64
+          flutter-version-file: ./tdesign-component/pubspec.yaml
+      - run: |
+          git config --global --add safe.directory /opt/hostedtoolcache/flutter/${{ steps.flutter-action.outputs.CHANNEL }}-${{ steps.flutter-action.outputs.VERSION }}-${{ steps.flutter-action.outputs.ARCHITECTURE }}
+          flutter --version    
+      - name: pub get
+        working-directory: ./tdesign-component
+        run: flutter pub get
+      - name: flutter test
+        working-directory: ./tdesign-component
+        run: flutter test
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          architecture: x64
+          flutter-version-file: ./tdesign-component/pubspec.yaml
+      - run: |
+          git config --global --add safe.directory /opt/hostedtoolcache/flutter/${{ steps.flutter-action.outputs.CHANNEL }}-${{ steps.flutter-action.outputs.VERSION }}-${{ steps.flutter-action.outputs.ARCHITECTURE }}
+          flutter --version 
+
+      - name: flutter pub get
+        working-directory: ./tdesign-component
+        run: flutter pub get
+      - name: flutter build
+        working-directory: ./tdesign-component
+        run: flutter build apk
