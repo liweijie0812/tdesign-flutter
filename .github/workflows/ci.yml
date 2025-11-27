@@ -22,7 +22,7 @@ jobs:
         with:
           flutter-version: ${{ matrix.flutter-version }}
           aop-registry: true
-          cache: false
+          cache: true
       - name: tdesign-adaptation
         run: sh ./tdesign-component/init.sh
 
@@ -57,7 +57,7 @@ jobs:
         with:
           flutter-version: ${{ matrix.flutter-version }}
           aop-registry: true
-          cache: false
+          cache: true
 
       - name: tdesign-adaptation
         run: sh ./tdesign-component/init.sh
@@ -92,7 +92,7 @@ jobs:
         with:
           flutter-version: ${{ matrix.flutter-version }}
           aop-registry: true
-          cache: false
+          cache: true
       - name: tdesign-adaptation
         run: sh ./tdesign-component/init.sh
 
