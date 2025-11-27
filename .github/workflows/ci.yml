@@ -39,7 +39,28 @@ jobs:
 
       - name: flutter build
         working-directory: ./tdesign-component/example
-        run: flutter build apk -t ./lib/main.dart --release
+        run: |
+           # 1. 动态生成临时测试证书（密码和信息固定，仅用于测试）
+           keytool -genkey -v \
+           -keystore temp_test_key.jks \
+           -keyalg RSA \
+           -keysize 2048 \
+           -validity 365 \
+           -alias test_alias \
+           -dname "CN=CI-Test, OU=Test, O=Test, L=Test, ST=Test, C=CN" \
+           -storepass 123456 \
+           -keypass 123456 \
+           -keystore ./android/app/temp_test_key.jks # 证书输出到 app 目录
+
+           # 2. 构建测试包（通过 -P 参数传递证书信息，避免硬编码）
+           flutter build apk \
+           --build-type test \
+           -PtestStoreFile=temp_test_key.jks \
+           -PtestStorePassword=123456 \
+           -PtestKeyAlias=test_alias \
+           -PtestKeyPassword=123456
+
+           #flutter build apk -t ./lib/main.dart --release
 
 
   build-ios:
