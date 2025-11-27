@@ -24,8 +24,7 @@ jobs:
           aop-registry: true
           cache: false
       - name: tdesign-adaptation
-        run: sh init.sh
-        working-directory: ./tdesign-component
+        run: sh ./tdesign-component/init.sh
 
       - name: Get tdesign-flutter-generator
         uses: actions/checkout@v4
@@ -61,8 +60,7 @@ jobs:
           cache: false
 
       - name: tdesign-adaptation
-        run: sh init.sh
-        working-directory: ./tdesign-component    
+        run: sh ./tdesign-component/init.sh
 
       - name: Get tdesign-flutter-generator
         uses: actions/checkout@v4
@@ -96,8 +94,7 @@ jobs:
           aop-registry: true
           cache: false
       - name: tdesign-adaptation
-        run: sh init.sh
-        working-directory: ./tdesign-component
+        run: sh ./tdesign-component/init.sh
 
       - name: Get tdesign-flutter-generator
         uses: actions/checkout@v4
