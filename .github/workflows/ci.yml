@@ -13,6 +13,7 @@ jobs:
       matrix:
         flutter-version:
           - 3.16.9
+          - 3.32.0
           - 3.x
     steps:
       - uses: actions/checkout@v4
@@ -48,6 +49,7 @@ jobs:
       matrix:
         flutter-version:
           - 3.16.9
+          - 3.32.0
           - 3.x
     steps:
       - uses: actions/checkout@v4
@@ -83,6 +85,7 @@ jobs:
       matrix:
         flutter-version:
           - 3.16.9
+          - 3.32.0
           - 3.x
     steps:
       - uses: actions/checkout@v4
