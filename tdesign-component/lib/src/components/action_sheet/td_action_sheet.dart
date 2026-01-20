@@ -96,7 +96,7 @@ class TDActionSheet {
   /// 当[theme]等于[TDActionSheetTheme.grid]时有效
   final bool showPagination;
 
-  /// 是否可以横向滚动
+  /// 是否可以横向滚动123123
   /// 当[theme]等于[TDActionSheetTheme.grid]且[showPagination]为false时有效
   final bool scrollable;
 
