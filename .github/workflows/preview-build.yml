@@ -104,18 +104,6 @@ jobs:
           chmod +x ./bin/api_tool_linux
           sh all_build.sh
 
-      - name: demo tools build api md
-        run: |
-          cd $GITHUB_WORKSPACE/tdesign-component/demo_tool
-          # Make sure binary files are not symlinks
-          if [ -L ./bin/api_tool_linux ]; then
-            echo "Error: api_tool_linux is a symlink. This may be a Git configuration issue."
-            echo "Please check if Git LFS is properly configured or if the file should be a regular file."
-            exit 1
-          fi
-          chmod +x ./bin/api_tool_linux
-          sh all_build.sh
-
       - name: Build Flutter apk
         run: |
           cd $GITHUB_WORKSPACE/tdesign-component/example
@@ -182,6 +170,9 @@ jobs:
           mv app-release.apk tdesign-flutter-${VERSION}-${BUILD}.apk
           echo "APK renamed to: tdesign-flutter-${VERSION}-${BUILD}.apk"
           ls -la tdesign-flutter-${VERSION}-${BUILD}.apk
+
+      - uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
@@ -303,6 +294,7 @@ jobs:
               # Push to the current branch
               git push origin HEAD:${{ github.head_ref || github.ref_name }}
               echo "✓ Documentation changes committed and pushed"
+              exit 0
             fi
           else
             echo "✓ No documentation changes detected"
