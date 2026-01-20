@@ -13,7 +13,7 @@ jobs:
       - name: Setup Flutter
         uses: TDesignOteam/workflows/actions/setup-flutter@main
         with:
-          flutter-version: ${{ matrix.flutter-version }}
+          flutter-version: 3.32.0
           cache: true
           aop-registry: true
           aop-project-path: ./tdesign-component/example
