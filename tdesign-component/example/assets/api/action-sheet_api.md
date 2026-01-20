@@ -37,7 +37,7 @@
 | onClose | VoidCallback? | - | 关闭时的回调函数 |
 | onSelected | TDActionSheetItemCallback? | - | 选择项目时的回调函数 |
 | rows | int | 2 | 显示的行数 |
-| scrollable | bool | false | 是否可以横向滚动 |
+| scrollable | bool | false | 是否可以横向滚动123123 |
 | showCancel | bool | true | 是否显示取消按钮 |
 | showOverlay | bool | true | 是否显示遮罩层 |
 | showPagination | bool | false | 是否显示分页 |
