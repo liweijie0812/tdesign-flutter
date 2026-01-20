@@ -171,7 +171,6 @@ jobs:
           echo "APK renamed to: tdesign-flutter-${VERSION}-${BUILD}.apk"
           ls -la tdesign-flutter-${VERSION}-${BUILD}.apk
 
-      - uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
