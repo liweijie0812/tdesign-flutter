@@ -32,4 +32,4 @@ jobs:
         with:
           version: ${{ github.ref_name }}
           label: ${{ github.ref_name }}
-          token: ${{ secrets.PERSONAL_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
